@@ -1,2 +1,2 @@
 # KvaliDashboard
-Vores mega awesome dashboard
+Et mega awesome dashboard
