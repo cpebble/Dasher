@@ -1,0 +1,141 @@
+html body, div {
+margin:0;
+padding:0;
+font-family: 'Alegreya Sans', sans-serif;
+font-family: 'Lato', sans-serif;
+}
+ul {
+list-style-type: none;
+padding: 0;
+}
+html {
+font-size: 1em;
+}
+html body {
+background-color:#e9ebee;
+}
+.container-fluid {
+display:grid;
+grid-template-columns: 2fr 1fr;
+}
+.MainHeader {
+min-height:180px;
+background-color:#1B2129;
+grid-column: 1/3;
+-webkit-box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);
+-moz-box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);
+box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.8);
+margin-bottom: 40px;
+}
+.MainHeader p, .MainHeader h1, .MainHeader h2, .MainHeader h3 {
+color:#eee;
+}
+.sidebar {
+grid-column: 1fr;
+margin-right: 50px;
+margin-left:10px;
+}
+.sidebar > .card > ul > li > img, .sidebar > .card > ul > li > p {
+display:inline;
+}
+.sidebar > .card > ul > li > img{
+    border-radius: 50%;
+}
+.sidebar > .card > ul > li > p span {
+font-style: italic;
+}
+.card {
+border-radius:3px;
+/* box-shadow:2px 2px 5px 2px rgba(200,200,200,0.1); */
+padding:0px 10px;
+/*margin:5px;*/
+border: 1px solid #dddfe2;
+background-color:	#fff;
+}
+.card-2 {
+grid-column:span 2;
+}
+.content {
+grid-column: 2fr;
+grid-template-columns: 1fr 1fr 1fr;
+display:grid;
+margin-left: 50px;
+grid-gap: 10px;
+}
+
+#users li {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    margin:0 0 10px 0;
+}
+#users li h4{
+    grid-column: 1/3;
+}
+#users li p {
+    align-self: center;
+    margin:4px 0 0 0;
+}
+.charts--vertical {
+	height:180px;
+	display:block;
+	margin:0 50px;
+}
+.charts--vertical .charts__chart {
+	width:3.5rem;
+}
+#chartdiv > div > div.amcharts-chart-div > a {
+visibility:hidden;
+}
+/* Dashboard-mode */
+ul#users li p {
+font-size: 1.5em;
+}
+h1 {
+font-size: 3em;
+}
+h2 {
+font-size: 2.5em;
+}
+h3 {
+font-size: 2em;
+}
+h4 {
+font-size: 1.5em;
+margin:10px 0 0;
+}
+
+#albumcover{
+    height: 300px;
+    width: 300px;
+    float: left;
+    margin-right: 0.5em;
+}
+#albumcover img{
+    width: 100%;
+    float: left;
+    clip-path: circle(50% at 50% 50%);
+    animation: rotate 10s linear infinite;
+}
+#albumcover::after{
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    background: radial-gradient(circle at center, rgba(255,255,255,1) 10%, rgba(255,255,255,0) 10%);
+    content: " ";
+    display: block;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+@keyframes rotate {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+body{
+    overflow-x: hidden;
+    overflow-y: hidden;
+}

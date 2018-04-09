@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+       <meta charset="utf-8">
+       <title>Kvali-Awesome-Dashboard</title>
+       <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+       <script src="/socket.io/socket.io.js"></script>
+
+       <!-- Resources -->
+		<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+		<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+		<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+		<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+		<script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
+
+        <link rel="stylesheet" href="https://cdn.rawgit.com/theus/chart.css/v1.0.0/dist/chart.css" />
+
+        <script src="js/dash.js"></script>
+        <link rel="stylesheet" href="/css/style.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Lato" rel="stylesheet">
+
+<!--        <meta http-equiv="refresh" content="2;url=/"> -->
+
+</head>
+<body>
+<div class="container-fluid">
+
+	<div class="MainHeader">
+
+
+    	<div id="chartdiv" style="height:200px;width100%;"></div>
+
+
+
+	</div>
+
+
+		<div class="content">
+		    <div class="card card-2">
+				<h2>Live sites:</h2>
+
+
+    		</div>
+
+    		<div class="card">
+				<h2>Timer tracket i dag:</h2>
+
+				<h3 style="text-align:center">5/4</h3>
+
+    		</div>
+
+    		<div class="card">
+				<h2>KvaliPi</h2>
+				<p>CPU: <span class="piStats" id="cpu"></span></p>
+				<p>Memory: <span class="piStats" id="mem"></span></p>
+    		</div>
+
+			<div class="card card-2">
+				<h2>Live sites</h2>
+                <h4 class="live-sites" id="uptime"></h4>
+                <h4 class="live-sites" id="cpuLoad"></h4>
+
+    		</div>
+
+		    <div class="card card-2">
+                <div class="musicInfo" id="albumcover">
+                    <img class="musicInfo" id="art" src="img/album.jpg" />
+                </div>
+                <h3 class="musicInfo" id="name">Sangnavn</h3>
+                <h4 class="musicInfo" id="album">album</h4>
+                <h4 class="musicInfo" id="artist">Kunstner</h4>
+    		</div>
+
+		</div>
+
+
+		<div class="sidebar">
+			<div class="card">
+				<h2>Hvem arbejder på hvad?</h2>
+				<ul id="users">
+
+				</ul>
+			</div>
+		</div>
+
+
+	</div>
+<script>
+var chart = AmCharts.makeChart("chartdiv", {
+    "type": "serial",
+    "theme": "dark",
+    "marginTop":0,
+    "marginRight": 50,
+    "dataProvider": [{
+        "date": "01-01-2017",
+        "value": 6
+    }, {
+        "date": "02-01-2017",
+        "value": 10
+    }, {
+        "date": "03-02-2017",
+        "value": 11
+    }, {
+        "date": "05-02-2017",
+        "value": 4
+    }, {
+        "date": "01-03-2017",
+        "value": 2
+    }],
+    "valueAxes": [{
+        "axisAlpha": 0,
+        "position": "left"
+    }],
+    "graphs": [{
+        "id":"g1",
+        "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
+        "bullet": "round",
+        "bulletSize": 8,
+        "lineColor": "#d1655d",
+        "lineThickness": 4,
+        "negativeLineColor": "#637bb6",
+        "type": "smoothedLine",
+        "valueField": "value"
+    }],
+    "chartScrollbar": {
+        "graph":"g1",
+        "gridAlpha":0,
+        "color":"#888888",
+        "scrollbarHeight":45,
+        "backgroundAlpha":0,
+        "selectedBackgroundAlpha":0.1,
+        "selectedBackgroundColor":"#888888",
+        "graphFillAlpha":0,
+        "autoGridCount":true,
+        "selectedGraphFillAlpha":0,
+        "graphLineAlpha":0.2,
+        "graphLineColor":"#c2c2c2",
+        "selectedGraphLineColor":"#888888",
+        "selectedGraphLineAlpha":1
+
+    },
+    "chartCursor": {
+        "categoryBalloonDateFormat": "DD",
+        "cursorAlpha": 0,
+        "valueLineEnabled":false,
+        "valueLineBalloonEnabled":false,
+        "valueLineAlpha":0.5,
+        "fullWidth":true
+    },
+    "dataDateFormat": "DD-MM-YYYY",
+    "categoryField": "date",
+    "categoryAxis": {
+        "minPeriod": "DD-MM-YYYY",
+        "parseDates": false,
+        "minorGridAlpha": 0.1,
+        "minorGridEnabled": true
+    },
+    "export": {
+        "enabled": false
+    }
+});
+
+chart.addListener("rendered", zoomChart);
+if(chart.zoomChart){
+	chart.zoomChart();
+}
+
+function zoomChart(){
+    chart.zoomToIndexes(Math.round(chart.dataProvider.length * 0.4), Math.round(chart.dataProvider.length * 0.55));
+}
+</script>
+
+</body>
+</html>
